@@ -5,6 +5,25 @@ Ejemplo que contiene una evolución de la práctica anterior con dos servicios i
 * `library-service`: aplicación web y API REST para gestionar libros, imágenes, tiendas y autenticación.
 * `stock-service`: servicio auxiliar que devuelve el stock asociado a un libro.
 
+## Diagrama de servicios
+
+```mermaid
+flowchart LR
+	subgraph Ext[Cliente externo]
+		user[Usuario / Cliente]
+	end
+
+	subgraph App[Aplicacion]
+		library[library-service HTTPS :8443]
+		stock[stock-service HTTP :8080]
+		mysql[(MySQL books)]
+	end
+
+	user -->|UI web y API REST| library
+	library -->|GET /api/stocks/| stock
+	library -->|JPA| mysql
+```
+
 ## Requisitos previos
 
 El proyecto necesita una base de datos MySQL disponible en `localhost` con esta configuración:
@@ -41,10 +60,28 @@ Desde el directorio `ejemplo-practica3/library-service`:
 mvn spring-boot:run
 ```
 
+### Configuración de stock-service por variable de entorno
+
+`library-service` usa la propiedad `stock.service.url` para conectar con `stock-service`.
+Esa propiedad se puede configurar con la variable de entorno `STOCK_SERVICE_URL`.
+
+Valor por defecto:
+
+```text
+http://localhost:8080
+```
+
+Ejemplo de arranque con variable de entorno:
+
+```sh
+STOCK_SERVICE_URL=http://localhost:8080 mvn spring-boot:run
+```
+
 La aplicación se expone en:
 
 * Web: [https://localhost:8443](https://localhost:8443)
-* API REST: https://localhost:8443/api/[books/shops/images/users]
+* API REST base: [https://localhost:8443/api/](https://localhost:8443/api/)
+* Endpoints principales: `books`, `shops`, `images`, `users` y `auth`
 
 ### Usuarios
 
@@ -119,4 +156,4 @@ El orden recomendado para levantar el ejemplo es:
 2. Arrancar `stock-service`.
 3. Arrancar `library-service`.
 
-Con eso, la aplicación web podrá mostrar el stock de cada libro y la API REST devolverá el campo `stock` en las respuestas de libros.
+Con eso, la aplicación web podrá mostrar el stock de cada libro y la API REST permitirá consultarlo mediante el endpoint `GET /api/books/{id}/stock`.

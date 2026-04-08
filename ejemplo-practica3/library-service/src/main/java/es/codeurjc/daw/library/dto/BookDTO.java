@@ -7,6 +7,5 @@ public record BookDTO(
         String title,
         String description,
         ImageDTO image,
-        List<ShopBasicDTO> shops,
-        int stock) {
+        List<ShopBasicDTO> shops) {
 }

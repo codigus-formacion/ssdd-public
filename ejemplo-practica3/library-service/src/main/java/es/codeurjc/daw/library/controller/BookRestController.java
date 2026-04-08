@@ -40,10 +40,10 @@ public class BookRestController {
 	private BookService bookService;
 
 	@Autowired
-	private StockService stockService;
+	private ImageService imageService;
 
 	@Autowired
-	private ImageService imageService;
+	private StockService stockService;
 
 	@Autowired
 	private BookMapper bookMapper;
@@ -54,19 +54,23 @@ public class BookRestController {
 	@GetMapping("/")
 	public Collection<BookDTO> getBooks() {
 		return bookService.getBooks().stream()
-				.map(book -> {
-					StockDTO stockDTO = stockService.getStock(bookMapper.toBasicDTO(book));
-					return bookMapper.toDTOWithStock(book, stockDTO.stock());
-				})
+				.map(bookMapper::toDTO)
 				.toList();
 	}
 
 	@GetMapping("/{id}")
 	public BookDTO getBook(@PathVariable long id) {
 		Book book = bookService.getBook(id);
+
+		return bookMapper.toDTO(book);
+	}
+
+	@GetMapping("/{id}/stock")
+	public StockDTO getBookStock(@PathVariable long id) {
+		Book book = bookService.getBook(id);
 		StockDTO stockDTO = stockService.getStock(bookMapper.toBasicDTO(book));
 
-		return bookMapper.toDTOWithStock(book, stockDTO.stock());
+		return stockDTO;
 	}
 
 	@PostMapping("/")

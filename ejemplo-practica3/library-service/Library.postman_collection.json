@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "1f2a8f7a-3cbe-4a4a-9d19-078bb789702a",
-		"name": "DAW Books (Práctica 2)",
+		"name": "Library (Práctica 3)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -113,6 +113,26 @@
 						"api",
 						"books",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book Stock (public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/books/1/stock",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"1",
+						"stock"
 					]
 				}
 			},
@@ -473,7 +493,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": ""
+			"value": "https://localhost:8443"
 		}
 	]
 }

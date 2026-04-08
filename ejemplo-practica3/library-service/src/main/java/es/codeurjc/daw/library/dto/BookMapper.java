@@ -12,11 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface BookMapper {
 
-    @Mapping(target = "stock", ignore = true)
     BookDTO toDTO(Book book);
-
-    @Mapping(target = "stock", source = "stock")
-    BookDTO toDTOWithStock(Book book, int stock);
 
     BookBasicDTO toBasicDTO(Book book);
 

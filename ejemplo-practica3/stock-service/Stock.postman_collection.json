@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "3070f6ea-4ddb-48fd-acd9-a0cc18368c16",
+		"name": "Stock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51604803",
+		"_collection_link": "https://oscarsotosanchez-4772843.postman.co/workspace/%C3%93scar-Soto's-Workspace~761626ce-0702-4ef8-8988-958ce959e2c1/collection/51604803-3070f6ea-4ddb-48fd-acd9-a0cc18368c16?action=share&source=collection_link&creator=51604803"
+	},
+	"item": [
+		{
+			"name": "GET Stocks",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"title\": \"SUEÑOS DE ACERO Y NEON\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/stocks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"stocks"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	]
+}

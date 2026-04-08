@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/stocks/:
+    get:
+      tags:
+      - stock-rest-controller
+      operationId: getStock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BookBasicDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/StockDTO"
+components:
+  schemas:
+    BookBasicDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+    StockDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        stock:
+          type: integer
+          format: int32

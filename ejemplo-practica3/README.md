@@ -24,10 +24,13 @@ docker run --rm -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=books -p 3306:
 Es la aplicación principal del ejemplo. Incluye:
 
 * Interfaz web con Spring MVC y templates Mustache.
-* API REST para libros, tiendas, imágenes y autenticación.
 * Persistencia en MySQL.
 * Gestión de imágenes en base de datos.
 * Seguridad con HTTPS y usuarios con roles.
+
+A la que se le ha añadido:
+
+* API REST para libros, tiendas, imágenes y autenticación.
 * Consulta al `stock-service` para mostrar el stock de cada libro.
 
 ### Arranque
@@ -41,7 +44,7 @@ mvn spring-boot:run
 La aplicación se expone en:
 
 * Web: [https://localhost:8443](https://localhost:8443)
-* API REST: [https://localhost:8443/api/books](https://localhost:8443/api/books)
+* API REST: https://localhost:8443/api/[books/shops/images/users]
 
 ### Usuarios
 
@@ -64,8 +67,8 @@ mvn verify -Djavax.net.ssl.trustStore=src/main/resources/keystore.jks -Djavax.ne
 
 La documentación se puede consultar en:
 
-* [OpenAPI Specification](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/library-service/api-docs/api-docs.yaml)
-* [HTML view of the documentation](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/library-service/api-docs/api-docs.html)
+* [Especificación OpenAPI de library-service](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/library-service/api-docs/api-docs.yaml)
+* [HTML OpenAPI de library-service](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/library-service/api-docs/api-docs.html)
 
 ## stock-service
 
@@ -105,8 +108,8 @@ mvn verify
 
 La documentación generada queda en:
 
-* [OpenAPI Specification](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/stock-service/api-docs/api-docs.yaml)
-* [HTML view of the documentation](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/stock-service/api-docs/api-docs.html)
+* [Especificación OpenAPI de stock-service](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/stock-service/api-docs/api-docs.yaml)
+* [HTML OpenAPI de stock-service](https://rawcdn.githack.com/codigus-formacion/ssdd-public/refs/heads/master/ejemplo-practica3/stock-service/api-docs/api-docs.html)
 
 ## Arranque completo
 

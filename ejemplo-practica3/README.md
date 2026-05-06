@@ -99,7 +99,7 @@ keytool -genkeypair -alias selfsigned -keyalg RSA -keysize 2048 -validity 365 -k
 Después se puede generar la documentación con:
 
 ```sh
-mvn verify -Djavax.net.ssl.trustStore=src/main/resources/keystore.jks -Djavax.net.ssl.trustStorePassword=password
+mvn verify "-Djavax.net.ssl.trustStore=src/main/resources/keystore.jks" "-Djavax.net.ssl.trustStorePassword=password"
 ```
 
 La documentación se puede consultar en:
